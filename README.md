@@ -10,5 +10,4 @@
 
 ## Lit
 
-The starter project is independent for the moment and located into ./litelementproject dir
-
+The starter project is independent for the moment and located into [./litelementproject](https://github.com/julien-deramond/o-web-components/tree/main/litelementproject).
