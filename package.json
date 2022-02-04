@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "lerna exec -- rollup -c ../../rollup.config.js",
-    "test": "jest"
+    "test": "jest",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
