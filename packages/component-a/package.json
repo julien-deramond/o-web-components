@@ -2,5 +2,8 @@
   "name": "@owc/component-a",
   "version": "0.0.2-alpha.0",
   "main": "dist/bundle.cjs.js",
-  "module": "dist/bundle.esm.js"
+  "module": "dist/bundle.esm.js",
+  "publishConfig": {
+    "access": "public"
+  }
 }
