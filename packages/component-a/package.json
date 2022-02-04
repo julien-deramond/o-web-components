@@ -1,0 +1,7 @@
+{
+  "name": "@owc/component-a",
+  "version": "0.0.1",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js"
+}
+

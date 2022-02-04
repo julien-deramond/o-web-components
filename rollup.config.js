@@ -1,38 +1,46 @@
-/**
- * @license
- * Copyright 2018 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
+import resolve from '@rollup/plugin-node-resolve'
+import { string } from 'rollup-plugin-string'
+import typescript from '@rollup/plugin-typescript'
+import babel from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
 
-import summary from 'rollup-plugin-summary';
-import {terser} from 'rollup-plugin-terser';
-import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
+const production = !process.env.ROLLUP_WATCH
+
+const PACKAGE_ROOT_PATH = process.cwd()
+const { LERNA_PACKAGE_NAME, LERNA_ROOT_PATH } = process.env
 
 export default {
-  input: 'my-element.js',
-  output: {
-    file: 'my-element.bundled.js',
-    format: 'esm',
-  },
-  onwarn(warning) {
-    if (warning.code !== 'THIS_IS_UNDEFINED') {
-      console.error(`(!) ${warning.message}`);
+  input: `${PACKAGE_ROOT_PATH}/index.ts`,
+  external: [/@babel\/runtime/],
+  output: [
+    {
+      file: 'dist/bundle.cjs.js',
+      format: 'cjs'
+    },
+    {
+      file: 'dist/bundle.esm.js',
+      format: 'esm'
+    },
+    {
+      name: LERNA_PACKAGE_NAME,
+      file: 'dist/bundle.umd.js',
+      format: 'umd'
     }
-  },
-  plugins: [
-    replace({'Reflect.decorate': 'undefined'}),
-    resolve(),
-    terser({
-      ecma: 2017,
-      module: true,
-      warnings: true,
-      mangle: {
-        properties: {
-          regex: /^__/,
-        },
-      },
-    }),
-    summary(),
   ],
-};
+  plugins: [
+    resolve(),
+    string({
+      include: '**/*.html'
+    }),
+    typescript({
+      tsconfig: `${LERNA_ROOT_PATH}/tsconfig.json`
+    }),
+    babel({
+      exclude: 'node_modules/**',
+      rootMode: 'upward',
+      babelHelpers: 'runtime'
+    }),
+    production && terser()
+  ]
+}
+
