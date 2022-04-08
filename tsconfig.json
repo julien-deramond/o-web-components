@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2018"
+    "target": "es2018",
+    "experimentalDecorators": true, // TODO: used for Lit element
   },
   "include": ["**/*.ts"]
 }
