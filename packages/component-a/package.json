@@ -1,6 +1,6 @@
 {
   "name": "@orwc/component-a",
-  "version": "0.0.5-alpha.0",
+  "version": "0.0.6-alpha.0",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "publishConfig": {
