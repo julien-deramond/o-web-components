@@ -1,0 +1,12 @@
+{
+  "name": "@orwc/lit-my-element",
+  "version": "0.0.1-alpha.0",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "lit": "^2.2.2"
+  }
+}
