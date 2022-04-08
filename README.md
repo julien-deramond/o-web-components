@@ -22,6 +22,7 @@ In order to use the [`@orwc`](https://www.npmjs.com/settings/orwc/packages) Web 
 ```ts
 import '@orwc/component-a/dist/bundle.esm';
 import '@orwc/component-b/dist/bundle.esm';
+import '@orwc/lit-my-element/dist/bundle.esm';
 ```
 
 and use them in your `app.component.html`:
@@ -29,7 +30,12 @@ and use them in your `app.component.html`:
 ```html
 <component-a></component-a>
 <component-b></component-b>
+<my-element>
+  <p>This is child content</p>
+</my-element>
 ```
+
+(see also https://github.com/julien-deramond/o-test-web-components)
 
 ## Lit
 
